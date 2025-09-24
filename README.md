@@ -1,4 +1,3 @@
-# nginx-docker-lab
 # Лабораторная работа №1: Nginx + Docker
 
 ## 👩‍💻 Автор

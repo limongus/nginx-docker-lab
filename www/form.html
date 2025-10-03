@@ -8,7 +8,7 @@
 
     <h2>Заявка на кредит</h2>
 
-    <form action="/apply" method="post">
+    <form action="/apply" method="post" id="credit-form">
         
         <p>
             <label for="full_name">Ваше имя:</label><br>
@@ -52,6 +52,30 @@
         <button type="submit">Отправить заявку</button>
         
     </form>
+	<div id="result"></div> 
+<script>
+    document.getElementById("credit-form").addEventListener("submit", function(e) {
+        // 1. Предотвращаем стандартную отправку формы
+        e.preventDefault();
 
+        // 2. Собираем все данные из формы в один объект
+        const data = new FormData(e.target);
+
+        // 3. Находим div для вывода результата
+        const resultDiv = document.getElementById("result");
+
+        // 4. Формируем красивый HTML и вставляем его в div
+        resultDiv.innerHTML = `<h2>✅ Заявка успешно отправлена!</h2>
+            <p><b>Имя:</b> ${data.get('full_name')}</p>
+            <p><b>Email:</b> ${data.get('email')}</p>
+            <p><b>Выбранный банк:</b> ${data.get('bank')}</p>
+            <p><b>Сумма:</b> ${data.get('amount')} руб.</p>
+            <p><b>Срок:</b> ${data.get('term')}</p>
+            <p><b>Страховка:</b> ${data.get('insurance') ? 'Да, оформлена' : 'Нет'}</p>`;
+        
+        // 5. Очищаем поля формы для нового ввода
+        e.target.reset();
+    });
+</script>
 </body>
 </html>

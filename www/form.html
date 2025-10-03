@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Заявка на кредит</title>
+</head>
+<body>
+
+    <h2>Заявка на кредит</h2>
+
+    <form action="/apply" method="post">
+        
+        <p>
+            <label for="full_name">Ваше имя:</label><br>
+            <input type="text" id="full_name" name="full_name" required>
+        </p>
+
+        <p>
+            <label for="email_field">Ваш Email:</label><br>
+            <input type="email" id="email_field" name="email" required>
+        </p>
+
+        <p>
+            <label for="bank_select">Выберите банк:</label><br>
+            <select id="bank_select" name="bank">
+                <option value="superbank">СуперБанк</option>
+                <option value="nanocredit">НаноКредит</option>
+                <option value="financeprom">ФинансПром</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="amount">Сумма кредита (руб):</label><br>
+            <input type="number" id="amount" name="amount" min="10000" step="1000" required>
+        </p>
+
+        <fieldset>
+            <legend>Срок кредита:</legend>
+            <input type="radio" id="term1" name="term" value="1_year" checked>
+            <label for="term1">1 год</label><br>
+            <input type="radio" id="term3" name="term" value="3_years">
+            <label for="term3">3 года</label><br>
+            <input type="radio" id="term5" name="term" value="5_years">
+            <label for="term5">5 лет</label>
+        </fieldset>
+
+        <p>
+            <input type="checkbox" id="insurance" name="insurance" value="yes">
+            <label for="insurance">Оформить страховку</label>
+        </p>
+
+        <button type="submit">Отправить заявку</button>
+        
+    </form>
+
+</body>
+</html>

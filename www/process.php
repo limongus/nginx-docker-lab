@@ -13,6 +13,12 @@ $_SESSION['form_data'] = [
     'email' => $email
 ];
 
+// Собираем все данные формы в одну строку, разделяя их точкой с запятой
+$line = date("Y-m-d H:i:s") . ";" . $fullName . ";" . $email . "\n";
+
+// Дописываем строку в конец файла data.txt
+file_put_contents("data.txt", $line, FILE_APPEND);
+
 // 4. Перенаправляем пользователя на главную страницу
 header("Location: index.php");
 exit(); // Завершаем выполнение скрипта после перенаправления

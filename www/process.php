@@ -7,6 +7,22 @@ session_start();
 $fullName = htmlspecialchars($_POST['full_name']);
 $email = htmlspecialchars($_POST['email'] ?? ''); //защита от вставки вредоносного HTML-кода.
 
+//Validation
+$errors = [];
+if (empty(trim($fullName))) {
+    $errors[] = "Имя не может быть пустым.";
+}
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = "Указан некорректный email адрес.";
+}
+
+// Если есть ошибки, сохраняем их в сессию и возвращаем на главную
+if (!empty($errors)) {
+    $_SESSION['errors'] = $errors;
+    header("Location: index.php");
+    exit();
+}
+
 // 3. Сохраняем полученные данные в сессию
 $_SESSION['form_data'] = [
     'name' => $fullName,

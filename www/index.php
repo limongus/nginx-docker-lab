@@ -8,6 +8,7 @@
 <body>
     <h1>Добро пожаловать!</h1>
 
+	
     <?php if(isset($_SESSION['form_data'])): ?>
         <div style="border: 1px solid green; padding: 10px;">
             <p>Спасибо! Ваши данные из последней заявки:</p>

@@ -19,7 +19,7 @@
 
 1.  Клонировать репозиторий:
     ```bash
-    git clone https://github.com/limongus/nginx-docker-lab
+    git clone https://github.com/limongus/nginx-docker-lab.git
     cd nginx-lab
     ```
 2.  Запустить контейнеры:

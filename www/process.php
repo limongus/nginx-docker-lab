@@ -35,6 +35,14 @@ $line = date("Y-m-d H:i:s") . ";" . $fullName . ";" . $email . "\n";
 // Дописываем строку в конец файла data.txt
 file_put_contents("data.txt", $line, FILE_APPEND);
 
+// Подключаем наш класс для работы с API
+require_once 'ApiClient.php';
+
+// Создаем экземпляр класса
+$api = new ApiClient();
+$apiData = $api->request('https://www.cbr-xml-daily.ru/daily_json.js');
+$_SESSION['api_data'] = $apiData['Valute'] ?? [];
+
 // 4. Перенаправляем пользователя на главную страницу
 header("Location: index.php");
 exit(); // Завершаем выполнение скрипта после перенаправления

@@ -49,7 +49,7 @@ session_start();
     <?php if (!empty($_SESSION['api_data'])):
         $valutes = $_SESSION['api_data']; ?>
         <div class="api-results">
-            <h3>Актуальные курсы валют (ЦБ РФ):</h3>
+            <h3>Актуальные курсы валют:</h3>
             <p>
                 <b>USD:</b> <?= round($valutes['USD']['Value'], 2) ?? 'Н/Д' ?> ₽ | 
                 <b>EUR:</b> <?= round($valutes['EUR']['Value'], 2) ?? 'Н/Д' ?> ₽ | 

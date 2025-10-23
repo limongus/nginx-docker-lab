@@ -1,0 +1,17 @@
+{
+    "name": "manyo/nginx-docker-lab",
+    "autoload": {
+        "psr-4": {
+            "Manyo\\NginxDockerLab\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "limongus",
+            "email": "145297656+limongus@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.10"
+    }
+}

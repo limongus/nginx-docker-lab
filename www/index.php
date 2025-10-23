@@ -1,6 +1,7 @@
 <?php
 // Запускаем сессию в самом начале
 session_start();
+require_once 'UserInfo.php';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -45,7 +46,7 @@ session_start();
         <?php unset($_SESSION['success_data']); ?>
     <?php endif; ?>
 
-    <!-- БЛОК 2: Вывод данных из API (из Шага 4) -->
+    <!-- БЛОК 2: Вывод данных из API -->
     <?php if (!empty($_SESSION['api_data'])):
         $valutes = $_SESSION['api_data']; ?>
         <div class="api-results">
@@ -59,6 +60,19 @@ session_start();
     <?php unset($_SESSION['api_data']); endif; ?>
 
     <hr style="margin: 30px 0;">
+
+<?php $info = UserInfo::getInfo(); ?>
+<div class="user-info">
+    <h3>Информация о сеансе:</h3>
+    <ul>
+        <?php foreach ($info as $key => $value): ?>
+            <li><b><?= $key ?>:</b> <?= htmlspecialchars($value) ?></li>
+        <?php endforeach; ?>
+        <?php if (isset($_COOKIE['last_credit_application'])): ?>
+            <li><b>Время последней заявки:</b> <?= $_COOKIE['last_credit_application'] ?></li>
+        <?php endif; ?>
+    </ul>
+</div>
 
     <!-- БЛОК 3: Навигация -->
     <a href="form.html">Подать новую заявку на кредит</a> |

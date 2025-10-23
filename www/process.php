@@ -42,6 +42,7 @@ require_once 'ApiClient.php';
 $api = new ApiClient();
 $apiData = $api->request('https://www.cbr-xml-daily.ru/daily_json.js');
 $_SESSION['api_data'] = $apiData['Valute'] ?? [];
+setcookie("last_credit_application", date('Y-m-d H:i:s'), time() + 3600, "/");
 
 // 4. Перенаправляем пользователя на главную страницу
 header("Location: index.php");
